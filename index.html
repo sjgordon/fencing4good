@@ -1,59 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>PLY Viewer</title>
-  <style>
-    body { margin: 0; overflow: hidden; }
-    canvas { display: block; }
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.3">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
   </style>
 </head>
 <body>
-<script type="module">
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-import { PLYLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/PLYLoader.js';
-
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xf5f5f5);
-
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 3);
-
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-
-scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 1));
-const dirLight = new THREE.DirectionalLight(0xffffff, 1);
-dirLight.position.set(1, 1, 1);
-scene.add(dirLight);
-
-const loader = new PLYLoader();
-loader.load('model.ply', geometry => {
-  geometry.computeVertexNormals();
-  const material = new THREE.MeshStandardMaterial({ color: 0x999999 });
-  const mesh = new THREE.Mesh(geometry, material);
-
-  geometry.center();
-  scene.add(mesh);
-});
-
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  renderer.render(scene, camera);
-}
-animate();
-
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-</script>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;PLY Viewer&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { margin: 0; overflow: hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>canvas { display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;script type="module"&gt;</p>
+<p class="p1">import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';</p>
+<p class="p1">import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';</p>
+<p class="p1">import { PLYLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/PLYLoader.js';</p>
+<p class="p2"><br></p>
+<p class="p1">const scene = new THREE.Scene();</p>
+<p class="p1">scene.background = new THREE.Color(0xf5f5f5);</p>
+<p class="p2"><br></p>
+<p class="p1">const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);</p>
+<p class="p1">camera.position.set(0, 0, 3);</p>
+<p class="p2"><br></p>
+<p class="p1">const renderer = new THREE.WebGLRenderer({ antialias: true });</p>
+<p class="p1">renderer.setSize(window.innerWidth, window.innerHeight);</p>
+<p class="p1">document.body.appendChild(renderer.domElement);</p>
+<p class="p2"><br></p>
+<p class="p1">const controls = new OrbitControls(camera, renderer.domElement);</p>
+<p class="p1">controls.enableDamping = true;</p>
+<p class="p2"><br></p>
+<p class="p1">scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 1));</p>
+<p class="p1">const dirLight = new THREE.DirectionalLight(0xffffff, 1);</p>
+<p class="p1">dirLight.position.set(1, 1, 1);</p>
+<p class="p1">scene.add(dirLight);</p>
+<p class="p2"><br></p>
+<p class="p1">const loader = new PLYLoader();</p>
+<p class="p1">loader.load('https://your-bucket.r2.cloudflarestorage.com/model.ply', geometry =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>geometry.computeVertexNormals();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const material = new THREE.MeshStandardMaterial({ color: 0x999999 });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const mesh = new THREE.Mesh(geometry, material);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>geometry.center();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>scene.add(mesh);</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">function animate() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>requestAnimationFrame(animate);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>controls.update();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderer.render(scene, camera);</p>
+<p class="p1">}</p>
+<p class="p1">animate();</p>
+<p class="p2"><br></p>
+<p class="p1">window.addEventListener('resize', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>camera.aspect = window.innerWidth / window.innerHeight;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>camera.updateProjectionMatrix();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderer.setSize(window.innerWidth, window.innerHeight);</p>
+<p class="p1">});</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
 </body>
 </html>
